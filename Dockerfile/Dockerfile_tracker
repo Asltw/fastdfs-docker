@@ -45,4 +45,4 @@ RUN chmod a+x start.sh
 
 EXPOSE 22122 8888
 
-ENTRYPOINT ["sh", "/usr/local/src/start.sh"]
+ENTRYPOINT ["/usr/local/src/start.sh"]

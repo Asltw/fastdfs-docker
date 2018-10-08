@@ -49,3 +49,11 @@ docker run -d -v ~/fastdfs-docker/storage3_group2/storage.conf:/etc/fdfs/storage
 docker run -d -v ~/fastdfs-docker/storage4_group2/storage.conf:/etc/fdfs/storage.conf -v ~/fastdfs-docker/storage4_group2/nginx.conf:/usr/local/nginx/conf/nginx.conf -v ~/fastdfs-docker/storage4_group2/mod_fastdfs.conf:/etc/fdfs/mod_fastdfs.conf --network fastdfs-docker --ip 172.18.0.7 -e FASTDFS_SERVER_NAME=storage --name storage4_group2 sh/storage:0.0.1 "/bin/bash -c ln -s /fastdfs/storage/data /fastdfs/storage/data/M00;\ ll /fastdfs/storage/data/M00"
 ```
 ### [fastdfs集群](https://github.com/Asltw/personal-notes/blob/master/fastdfs/FastDFS%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%28ubuntu%29.md)
+
+### 遇到的问题
+> 运行容器后，通过docker ps 查看发现容器马上退出。Docker容器若需后台运行，必须有一个前台进程。
+
+```sh
+# 将nginx挂到前台运行
+/usr/local/nginx/sbin/nginx -g "daemon off;"
+```

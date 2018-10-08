@@ -51,8 +51,9 @@ RUN wget http://nginx.org/download/nginx-1.12.2.tar.gz \
 RUN cp /usr/local/src/fastdfs/conf/http.conf /usr/local/src/fastdfs/conf/mime.types /etc/fdfs
 
 ADD start.sh /usr/local/src
-RUN chmod a+x start.sh
+ADD wait-for-it.sh /usr/local/src
+RUN chmod a+x start.sh && chmod a+x wait-for-it.sh
 
 EXPOSE 23000 8888
 
-ENTRYPOINT ["sh", "/usr/local/src/start.sh"]
+ENTRYPOINT ["/usr/local/src/start.sh"]
