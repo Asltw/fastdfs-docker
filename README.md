@@ -7,7 +7,10 @@ create a fastdfs cluster by docker
 
 ##### 按照以下网络部署
 ![image](http://pceh5403k.bkt.clouddn.com/fastdf-docker%E9%9B%86%E7%BE%A4.jpg)
-
+##### 在当前用户下拉取代码
+```sh
+git clone https://github.com/Asltw/fastdfs-docker.git
+```
 ##### 创建tracker镜像
 ```sh
 docker build -t sh/tracker:0.0.1 -f Dockerfile_tracker .
@@ -20,10 +23,8 @@ docker build -t sh/storage:0.0.1 -f Dockerfile_storage .
 ```sh
 docker network create --subnet=172.18.0.0/16 fastdfs-docker
 ```
-##### 在当前用户下创建目录
-```sh
-mkdir fastdfs-docker
-```
+> 创建好镜像之后，可以通过docker-compose直接启动，也可以通过以下命令一台一台启动
+
 ##### 创建trakcer01容器
 ```sh
 docker run -d -v ~/fastdfs-docker/tracker_1/tracker.conf:/etc/fdfs/tracker.conf -v ~/fastdfs-docker/tracker_1/nginx.conf:/usr/local/nginx/conf/nginx.conf --network  fastdfs-docker --ip 172.18.0.2 -e FASTDFS_SERVER_NAME=tracker --name tracker01 -p 22122:22122 -p 8888:8888 sh/tracker:0.0.1
