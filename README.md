@@ -10,6 +10,7 @@ create a fastdfs cluster by docker
 ##### 在当前用户下拉取代码
 ```sh
 git clone https://github.com/Asltw/fastdfs-docker.git
+cd ~/fastdfs-docker/Dockerfile/
 ```
 ##### 创建tracker镜像
 ```sh
@@ -23,7 +24,7 @@ docker build -t sh/storage:0.0.1 -f Dockerfile_storage .
 ```sh
 docker network create --subnet=172.18.0.0/16 fastdfs-docker
 ```
-> 创建好镜像之后，可以通过docker-compose直接启动，也可以通过以下命令一台一台启动
+> 创建好镜像之后，可以通过docker-compose直接启动，也可以通过以下命令依次启动容器
 
 ##### 创建trakcer01容器
 ```sh
