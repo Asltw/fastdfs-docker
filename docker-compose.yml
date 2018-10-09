@@ -31,6 +31,9 @@ services:
   storage1_group1:
     image: sh/storage:0.0.1
     container_name: storage1_group1
+    ports:
+      - "23001:23000"
+      - "30001:8888"
     networks:
       fastdfs-docker:
         ipv4_address: 172.18.0.4
@@ -44,6 +47,9 @@ services:
   storage2_group1:
     image: sh/storage:0.0.1
     container_name: storage2_group1
+    ports:
+      - "23002:23000"
+      - "30002:8888"
     networks:
       fastdfs-docker:
         ipv4_address: 172.18.0.5
@@ -57,6 +63,9 @@ services:
   storage3_group2:
     image: sh/storage:0.0.1
     container_name: storage3_group2
+    ports:
+      - "23003:23000"
+      - "30003:8888"
     networks:
       fastdfs-docker:
         ipv4_address: 172.18.0.6
@@ -70,6 +79,9 @@ services:
   storage4_group2:
     image: sh/storage:0.0.1
     container_name: storage4_group2
+    ports:
+      - "23004:23000"
+      - "30004:8888"
     networks:
       fastdfs-docker:
         ipv4_address: 172.18.0.7
