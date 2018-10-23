@@ -22,7 +22,7 @@ docker build -t sh/storage:0.0.1 -f Dockerfile_storage .
 ```
 ##### 创建桥接网络，设定固定IP段
 ```sh
-docker network create --subnet=172.18.0.0/16 fastdfs-docker
+docker network create --subnet=172.18.0.0/16 --gateway 172.18.0.1 fastdfs-docker
 ```
 > 创建好镜像之后，可以通过docker-compose直接启动，也可以通过以下命令依次启动容器
 
@@ -60,5 +60,8 @@ docker run -d -v ~/fastdfs-docker/storage4_group2/storage.conf:/etc/fdfs/storage
 /usr/local/nginx/sbin/nginx -g "daemon off;"
 ```
 
-### 无法解决的问题
-目前无法通过客户端程序访问，原因：外部无法直接访问容器内部
+目前外网无法通过客户端程序访问，原因：外部无法直接访问容器内部
+
+
+access docker container through container ip
+Access container IP from outside host network
